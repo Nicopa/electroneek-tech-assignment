@@ -1,12 +1,10 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
-import { ApiGateway } from './gateways/api.gateway';
 
 @Controller()
 export class AppController {
   constructor(
-    private readonly appService: AppService,
-    private readonly apiGateway: ApiGateway,
+    private readonly appService: AppService
   ) {}
 
   @Get()

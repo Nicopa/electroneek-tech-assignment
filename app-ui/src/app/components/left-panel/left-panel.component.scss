@@ -3,7 +3,7 @@
   height: 100vh;
   padding: 5px;
 
-  mat-card {
+  & > mat-card {
     width: 82%;
     height: 96.4vh;
   }

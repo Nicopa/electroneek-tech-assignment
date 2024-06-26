@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { PanelSwitcherService } from '@services/panel-switcher';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
+export class HomeComponent {
+  panel = '';
+  constructor(panelSwitcherService: PanelSwitcherService) {
+    panelSwitcherService.selectedPanel.subscribe(panel => this.panel = panel);
   }
-
 }

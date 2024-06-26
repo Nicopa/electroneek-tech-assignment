@@ -7,7 +7,12 @@
       [colspan]="5">
       <div class="container">
         <div class="canvas">
-          <app-canvas></app-canvas>
+          <app-canvas [ngSwitch]="panel">
+              <app-user-form *ngSwitchCase="'user-form'"></app-user-form>
+              <app-user-list *ngSwitchCase="'user-list'"></app-user-list>
+              <app-user-chat *ngSwitchCase="'user-chat'"></app-user-chat>
+              <div *ngSwitchCase="'user-find'">user-find form</div>
+          </app-canvas>
         </div>
         <div class="console">
           <app-console-logs></app-console-logs>

@@ -1,0 +1,7 @@
+<button type="button" mat-raised-button color="primary" [disabled]="isChatting" (click)="startChat()">Start Chat</button>
+<button type="button" mat-raised-button color="primary" [disabled]="!isChatting" (click)="stopChat()">Stop Chat</button>
+<div *ngIf="messages.value.length > 0" class="chat">
+    <cdk-virtual-scroll-viewport itemSize="32" appendOnly class="messages">
+        <p *cdkVirtualFor="let message of messages; index as i">{{i+1}}: {{message}}</p>
+    </cdk-virtual-scroll-viewport>
+</div>

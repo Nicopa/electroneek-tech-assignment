@@ -1,0 +1,10 @@
+form {
+    display: flex;
+    flex-direction: column;
+    mat-error {
+        margin-top: 5px;
+    }
+    button + button {
+        margin-top: 10px;
+    }
+}

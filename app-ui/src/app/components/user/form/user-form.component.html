@@ -1,0 +1,45 @@
+<mat-card>
+    <mat-card-title>
+        New User
+    </mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+        <mat-label>Username</mat-label>
+        <input id="username" matInput maxlength="20" [formControl]="userForm.controls.username" required>
+        <div *ngIf="userForm.controls.username.invalid && (userForm.controls.username.dirty || userForm.controls.username.touched)">
+            <mat-error *ngIf="userForm.controls.username.errors?.['required']">This field is required</mat-error>
+            <mat-error *ngIf="userForm.controls.username.errors?.['minlength']">Username must have at least 3 characters</mat-error>
+            <mat-error *ngIf="userForm.controls.username.errors?.['maxlength']">Username must have at most 20 characters</mat-error>
+        </div>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>E-mail</mat-label>
+        <input id="email" matInput [formControl]="userForm.controls.email" required>
+        <div *ngIf="userForm.controls.email.invalid && (userForm.controls.email.dirty || userForm.controls.email.touched)">
+            <mat-error *ngIf="userForm.controls.email.errors?.['required']">This field is required</mat-error>
+            <mat-error *ngIf="userForm.controls.email.errors?.['email']">It must be a valid e-mail</mat-error>
+        </div>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Age</mat-label>
+        <input id="age" type="number" matInput [formControl]="userForm.controls.age" min="1" max="150" required>
+        <div *ngIf="userForm.controls.age.invalid && (userForm.controls.age.dirty || userForm.controls.age.touched)">
+            <mat-error *ngIf="userForm.controls.age.errors?.['required']">This field is required</mat-error>
+            <mat-error *ngIf="userForm.controls.age.errors?.['min']">Age must be at least 1 year old</mat-error>
+            <mat-error *ngIf="userForm.controls.age.errors?.['max']">Age must be at most 150 years old</mat-error>
+        </div>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Address</mat-label>
+        <input id="address" matInput [formControl]="userForm.controls.address" maxlength="20">
+        <div *ngIf="userForm.controls.address.invalid && (userForm.controls.address.dirty || userForm.controls.address.touched)">
+            <mat-error *ngIf="userForm.controls.address.errors?.['maxlength']">Address must have at most 20 characters</mat-error>
+        </div>
+    </mat-form-field>
+    <button type="button" mat-raised-button color="primary" [disabled]="!userForm.valid" (click)="onSubmit()">Save</button>
+    <button type="button" mat-raised-button color="primary" [disabled]="!userForm.valid" (click)="onSubmitSync()">Save Synchronously</button>
+    </form>
+  </mat-card-content>
+</mat-card>
+
