@@ -13,6 +13,10 @@ Another requirement is, you have to make use of the ***Shared*** folder for shar
 ## Assignment resolution
 I've decided to implement an user chat simulation for this assignment. You can create users with some basic data, list and delete them. When you have at least one user and you start the chat, the users will send random messages in intervals of three seconds.
 
+> [Server docs](app-server/README.md)
+
+> [UI app docs](app-ui/README.md)
+
 You can check the HTTP endpoints documentation by running the server and accessing the base path: http://localhost:3000/.
 
 ## To Run the project
