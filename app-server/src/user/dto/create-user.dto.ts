@@ -6,7 +6,7 @@ export class CreateUserDto implements CreateUserRequestInterface {
     @Length(3, 20)
     readonly username: string;
 
-    @IsEmail()
+    @IsEmail(undefined, { message: 'Invalid email'})
     readonly email: string;
 
     @IsNumber()

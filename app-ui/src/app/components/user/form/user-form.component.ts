@@ -29,17 +29,24 @@ export class UserFormComponent {
       email: this.userForm.controls.email.value!,
       age: this.userForm.controls.age.value!,
       address: this.userForm.controls.address.value || undefined,
+    }).subscribe({
+      next: () => {
+        this.loggerService.log(`User ${this.userForm.controls.username.value} created`);
+        this.panelSwitcherService.setPanel('user-list');
+      },
+      error: (error) => console.error(error)
     });
-    this.panelSwitcherService.setPanel('user-list');
   }
-  onSubmitSync() {
+  async onSubmitSync() {
     this.loggerService.log('Submitting user form...');
-    this.userService.createUserSync({
-      username: this.userForm.controls.username.value!,
-      email: this.userForm.controls.email.value!,
-      age: this.userForm.controls.age.value!,
-      address: this.userForm.controls.address.value || undefined,
-    });
-    this.panelSwitcherService.setPanel('user-list');
+    try {
+      await this.userService.createUserSync({
+        username: this.userForm.controls.username.value!,
+        email: this.userForm.controls.email.value!,
+        age: this.userForm.controls.age.value!,
+        address: this.userForm.controls.address.value || undefined,
+      });
+      this.panelSwitcherService.setPanel('user-list');
+    } catch (error) {}
   }
 }

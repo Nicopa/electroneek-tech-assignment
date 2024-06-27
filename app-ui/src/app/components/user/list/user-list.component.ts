@@ -25,6 +25,9 @@ export class UserListComponent implements OnInit {
   }
   delete(username: string) {
     this.loggerService.log(`Deleting user ${username}`);
-    this.userService.deleteUser(username, () => this.load());
+    this.userService.deleteUser(username).subscribe(() => {
+      this.loggerService.log(`User ${username} deleted`);
+      this.load()
+    });
   }
 }

@@ -6,8 +6,9 @@ import { io, Socket } from 'socket.io-client';
 })
 export class WebsocketService implements OnDestroy {
     private socket: Socket;
+    private url = 'http://localhost:3000';
     constructor() {
-        this.socket = io('/app-ui', {
+        this.socket = io(`${this.url}/app-ui`, {
             autoConnect: false,
             reconnection: true,
             reconnectionAttempts: 5,

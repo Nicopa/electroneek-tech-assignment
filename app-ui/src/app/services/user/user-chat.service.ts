@@ -15,19 +15,19 @@ export class UserChatService {
     ) {}
 
     async startChat() {
-        this.loggerService.log(`[${UserChatService.name}] starting chat`);
+        this.loggerService.log(`Starting chat`);
         this.websocketService.on(UserWsSocketMessageName.ChatMessage, (data: UserMessageInterface) => {
-            this.loggerService.log(`[${UserChatService.name}] message received from ${data.username}`);
+            this.loggerService.log(`Message received from ${data.username}`);
             this._messagesSubject.next(data);
         });
         await this.websocketService.connect();
-        this.loggerService.log(`[${UserChatService.name}] connected to websocket`);
+        this.loggerService.log(`Connected to websocket`);
         const result = await this.websocketService.emitAndWaitResponse(UserWsSocketMessageName.StartChat);
         if (result === 'Started') {
-            this.loggerService.log(`[${UserChatService.name}] chat started`);
+            this.loggerService.log(`Chat started`);
         } else {
             console.log(result);
-            this.loggerService.log(`[${UserChatService.name}] failed to start chat`);
+            this.loggerService.log(`Failed to start chat!`);
         }
     }
 

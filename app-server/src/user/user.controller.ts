@@ -2,7 +2,9 @@ import { Body, Controller, Delete, Get, Param, Post, UseInterceptors } from "@ne
 import { UserService } from "./user.service";
 import { CreateUserDto } from "./dto/create-user.dto";
 import { UsernameAlreadyExistsInterceptor } from "./interceptor/username-already-exists.interceptor";
+import { ApiTags } from "@nestjs/swagger";
 
+@ApiTags('user')
 @Controller('user')
 export class UserController {
     constructor(private readonly userService: UserService) {}
